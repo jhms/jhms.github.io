@@ -55,7 +55,6 @@
 </html>
 <script>
 var video = document.querySelector("video");
-var od = document.querySelector(".od");
 var img = new Image();
 var Width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
@@ -84,7 +83,7 @@ img.onload = function(){
 };
 
 img.src = 'nosignal.gif';
-od.addEventListener("click", function(){
+video.addEventListener("click", function(){
 	if(video.muted) video.muted = false;
 });
 </script>
