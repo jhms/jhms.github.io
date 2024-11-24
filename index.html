@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta property="og:url" content="http://www.jhms.com.br">
+	<meta property="og:description" content=";)">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="JHMs">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<style>
+		.pagina {
+			height:100%;
+			width:100%;
+			background:#000;
+		}
+		html, body {
+		      padding:0px;
+		      margin:0px;
+		      overflow:hidden;
+		      background:#000;
+		}
+
+		.nosignal {
+			width:100%;
+			height:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:50;
+			background:#000;
+		}
+		video {
+			width:100%;
+			height:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:10;
+			object-fit: cover;
+		}
+	</style>
+
+
+	<title>JHMs :)</title>
+</head>
+<body>
+<div class='pagina'>
+	<div class='od'>
+	</div>
+	<img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' class='nosignal'>
+	<video width="320" height="240" oncontextmenu="return false;"  autoplay muted loop></video>
+</div>
+</body>
+</html>
+<script>
+var video = document.querySelector("video");
+var od = document.querySelector(".od");
+var img = new Image();
+var Width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+video.controls = false;
+
+img.onload = function(){ 
+	document.querySelector(".nosignal").src = "nosignal.gif"; 
+	var source = document.createElement('source');
+	source.src = "video.mp4";
+	source.type = "video/mp4";
+
+	video.appendChild(source);
+	video.play();
+
+	var T = setInterval(function() {
+		var isVideoPlaying = video => !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2 && video.duration > 0);
+
+		if(isVideoPlaying && (video.currentTime / video.duration) > 0.2) {
+			var elem = document.querySelector('.nosignal');
+			if(elem && elem.parentNode) {
+				elem.parentNode.removeChild(elem);
+				clearInterval(T);
+			}
+		}
+	},1000);
+};
+
+img.src = 'nosignal.gif';
+od.addEventListener("click", function(){
+	if(video.muted) video.muted = false;
+});
+</script>
+
