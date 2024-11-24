@@ -39,6 +39,17 @@
 			z-index:10;
 			object-fit: cover;
 		}
+		.od {
+			position: absolute;
+			z-index: 11;
+			bottom: 10px;
+			right: 10px;
+			width: 80px;
+			height: 10px;
+			font-size: 10px;
+			font-weight: bold;
+			font-family: math;
+		}
 	</style>
 
 
@@ -47,6 +58,7 @@
 <body>
 <div class='pagina'>
 	<div class='od'>
+		click to unmuted
 	</div>
 	<img src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' class='nosignal'>
 	<video width="320" height="240" oncontextmenu="return false;"  autoplay muted loop></video>
@@ -85,6 +97,7 @@ img.onload = function(){
 img.src = 'nosignal.gif';
 video.addEventListener("click", function(){
 	if(video.muted) video.muted = false;
+	document.querySelector(".od").style.display = "none";
 });
 </script>
 
