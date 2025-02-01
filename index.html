@@ -74,7 +74,7 @@ video.controls = false;
 img.onload = function(){ 
 	document.querySelector(".nosignal").src = "nosignal.gif"; 
 	var source = document.createElement('source');
-	source.src = "video.mp4";
+	source.src = location.hostname.replace("www.","") != "jhms.com.br" ? "offdomain.mp4" : "video.mp4";
 	source.type = "video/mp4";
 
 	video.appendChild(source);
