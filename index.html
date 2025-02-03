@@ -51,9 +51,6 @@
 			pointer-events: none;
 
 		}
-		@media only screen and (hover: none) and (pointer: coarse){
-			object-fit: none !important;
-		}
 	</style>
 
 
@@ -86,6 +83,7 @@ img.onload = function(){
 	var T = setInterval(function() {
 		var isVideoPlaying = video => !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2 && video.duration > 0);
 
+		if(window.innerHeight < window.innerWidth) video.style.setProperty("object-fit","none","important");
 		if(isVideoPlaying && (video.currentTime / video.duration) > 0.2) {
 			var elem = document.querySelector('.nosignal');
 			if(elem && elem.parentNode) {
